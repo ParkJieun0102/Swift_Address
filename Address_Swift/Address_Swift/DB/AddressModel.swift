@@ -35,4 +35,15 @@ class AddressModel: NSObject{
         self.addressStar = addressStar
         self.addressImage = addressImage
     }
+    
+    // constructor
+    init(addressNo: Int, addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth:String, addressImage:String) {
+        self.addressNo = addressNo
+        self.addressName = addressName
+        self.addressPhone = addressPhone
+        self.addressEmail = addressEmail
+        self.addressText = addressText
+        self.addressBirth = addressBirth
+        self.addressImage = addressImage
+    }
 }

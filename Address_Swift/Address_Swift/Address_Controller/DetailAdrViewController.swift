@@ -8,8 +8,7 @@
 import UIKit
 import MessageUI
 
-class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
-    
+class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol, AdrSelectJsonModelProtocol, UpdateDelegate {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
@@ -22,18 +21,19 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
     
     
     var addressReceiveItem = AddressModel() // AddressModel 객체 선언
+    var addressReceiveNo = 0
     var result = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblName.text = addressReceiveItem.addressName
-        lblPhone.text = addressReceiveItem.addressPhone
-        lblEmail.text = addressReceiveItem.addressEmail
+        let addressSelectModel = AddressSelectModel()
+        addressSelectModel.delegate = self
+        addressSelectModel.downloadItems(addressNo: addressReceiveNo)
         
         let starjsonModel = StarCountJsonModel()
         starjsonModel.delegate = self
-        starjsonModel.downloadItems(user_userEmail: Share.userID, address_addressNo: addressReceiveItem.addressNo!)
+        starjsonModel.downloadItems(user_userEmail: Share.userID, address_addressNo: addressReceiveNo)
         
         
         // 이미지뷰를 터치했을때 이벤트 주기 +++++++++++++++++
@@ -44,6 +44,18 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
         
         
        
+       
+        
+    }
+    
+    func adrSelectItemDownloaded(items: AddressModel) {
+        addressReceiveItem = items
+        print("address No : \(items.addressNo!)")
+        
+        lblName.text = addressReceiveItem.addressName
+        lblPhone.text = addressReceiveItem.addressPhone
+        lblEmail.text = addressReceiveItem.addressEmail
+        
         // ++++++++++++++++++++++++++++++++++++++++
         if addressReceiveItem.addressImage == "null" {
             // 이미지 없을때
@@ -56,16 +68,21 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
         }
         // ++++++++++++++++++++++++++++++++++++++++
         
+    }
+    
+    func reloadData() {
+        let addressSelectModel = AddressSelectModel()
+        addressSelectModel.delegate = self
+        addressSelectModel.downloadItems(addressNo: addressReceiveNo)
+        
+        let starjsonModel = StarCountJsonModel()
+        starjsonModel.delegate = self
+        starjsonModel.downloadItems(user_userEmail: Share.userID, address_addressNo: addressReceiveNo)
+        
         
     }
     
-    // 입력, 수정, 삭제 후 DB 재구성 → Table 재구성
-    override func viewWillAppear(_ animated: Bool) {
-        
-        //        let addressJsonModel = AddressJsonModel() // protocol연결된 클래스 객체 선언
-        //        addressJsonModel.delegate = self // 일 처리 시킬건데, 이 화면에서 시킬거고
-        //        addressJsonModel.downloadItems() // jsonModel의 downloadItems를 처리하게 할거야.
-    }
+    
     
     @objc func touchToStar(sender: UITapGestureRecognizer) {
         
@@ -222,6 +239,7 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let updateViewController = segue.destination as! UpdateViewController
+        updateViewController.delegate = self
         //
         let addressNo = addressReceiveItem.addressNo
         let addressText = addressReceiveItem.addressText

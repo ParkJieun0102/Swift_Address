@@ -118,8 +118,10 @@ class MainTableViewController: UITableViewController, AddressJsonModelProtocol {
             // 보낼 컨트롤러 위치
             let detailAdrViewController = segue.destination as! DetailAdrViewController
             
+            let addressNo = MainItem[(indexPath! as NSIndexPath).row] as! AddressModel
+            
             // detailview의 receiveItem에 =~~~~를 보낸다.
-            detailAdrViewController.addressReceiveItem = MainItem[(indexPath! as NSIndexPath).row] as! AddressModel
+            detailAdrViewController.addressReceiveNo = addressNo.addressNo!
             
             
         }

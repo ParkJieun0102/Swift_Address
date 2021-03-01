@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol UpdateDelegate {
+    func reloadData()
+}
 
 class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
@@ -15,7 +18,7 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var txtText: UITextField!
     @IBOutlet weak var txtBirth: UITextField!
     
-    
+    var delegate : UpdateDelegate?
     var AddressReceiveItem = AddressModel()
     
     let imagePickerController = UIImagePickerController()
@@ -104,7 +107,11 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         if checkImage == 2 {
             addressUpdateModel.addressUpdateItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, addressNo: addressNo!, at: imageURL!, completionHandler: {_, _ in
                 DispatchQueue.main.async { () -> Void in
-                    self.navigationController?.popViewController(animated: true)
+                    if self.delegate != nil{
+                        self.delegate?.reloadData()
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
                 }
             })
             

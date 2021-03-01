@@ -508,6 +508,9 @@
                                     <segment title="아이디 찾기"/>
                                     <segment title="비밀번호 찾기"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sgChangeFind:" destination="8el-aN-BZ5" eventType="valueChanged" id="6ah-jT-cAr"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-ds-j2O">
                                 <rect key="frame" x="0.0" y="762" width="390" height="82"/>
@@ -545,14 +548,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsJ-JD-Tck">
+                                <rect key="frame" x="40" y="402" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9S-Fi-39T">
+                                <rect key="frame" x="40" y="435" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qVL-WT-46b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="아이디/비밀번호 찾기" id="HcQ-tC-jwx"/>
                     <connections>
+                        <outlet property="FindBtn" destination="BgP-ds-j2O" id="xK3-Xm-3RK"/>
+                        <outlet property="FindEmail" destination="M9S-Fi-39T" id="ZCi-Gc-PwV"/>
                         <outlet property="FindName" destination="Z8y-BE-xSJ" id="Dv5-1r-0Mt"/>
                         <outlet property="FindPhone" destination="dWJ-Kw-3lJ" id="C5a-8G-4H8"/>
+                        <outlet property="lblEmail" destination="lsJ-JD-Tck" id="uGR-sQ-uK5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rys-s4-mxg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

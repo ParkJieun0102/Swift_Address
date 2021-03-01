@@ -88,7 +88,7 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         cell.delegate=self as? MyCellDelegate
         // cell 정의
         // 현재 배열값으로 들어온 cell 풀어서 정의.
-        let item: StarModel = StarItem[indexPath.row] as! StarModel
+        let item: AddressModel = StarItem[indexPath.row] as! AddressModel
         cell.lblName?.text = "\(item.addressName!)"
         cell.lblPhone?.text = "\(item.addressPhone!)"
         
@@ -139,15 +139,27 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        
+       if segue.identifier == "starDetail"{
+           // 사용자가 클릭한 위치는 sender가 알고있는데, 그 위치인 TableView Cell을 담을 변수 cell.
+           let cell = sender as! UITableViewCell
+           // 그 위치는 이제 indexPath에서 지정.
+           let indexPath = self.starListTableView.indexPath(for: cell)
+           // 보낼 컨트롤러 위치
+           let detailAdrViewController = segue.destination as! DetailAdrViewController
+        var addressNo = StarItem[(indexPath! as NSIndexPath).row] as! AddressModel
+        
+           // detailview의 receiveItem에 =~~~~를 보낸다.
+        detailAdrViewController.addressReceiveNo = addressNo.addressNo!
+       }
+        
      }
-     */
+     
     
    // *************************************************************************
     
