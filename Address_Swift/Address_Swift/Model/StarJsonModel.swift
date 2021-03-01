@@ -15,10 +15,17 @@ protocol StarJsonModelProtocol: class{
 
 class StarJsonModel: NSObject{
     var delegate: StarJsonModelProtocol!
-    let urlPath = "http://127.0.0.1:8080/swift_address/star_query_ios.jsp"
+    var urlPath = "http://127.0.0.1:8080/swift_address/star_query_ios.jsp"
     
-    func downloadItems(){
-        let url = URL(string: urlPath)!
+    func downloadItems(userEmail: String){
+        let urlAdd = "?userEmail=\(Share.userID)"
+        urlPath = urlPath + urlAdd
+        
+        // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 실제 url
+        let url: URL = URL(string: urlPath)! // 텍스트 글자를 url모드로 바꿔줌
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
         let task = defaultSession.dataTask(with: url){(data, response, error) in
@@ -65,10 +72,16 @@ class StarJsonModel: NSObject{
             
             //  scode는 jsonElement의 code값인데, String으로 형변환 시켜.
             if let user_userEmail = jsonElement["user_userEmail"] as? String,
-               let address_addressNo = jsonElement["address_addressNo"] as? Int{
+               let address_addressNo = jsonElement["address_addressNo"] as? Int,
+               let addressName = jsonElement["addressName"] as? String,
+               let addressPhone = jsonElement["addressPhone"] as? String,
+               let addressEmail = jsonElement["addressEmail"] as? String,
+               let addressText = jsonElement["addressText"] as? String,
+               let addressBirth = jsonElement["addressBirth"] as? String,
+               let addressImage = jsonElement["addressImage"] as? String{
                 print("addressNO:\(address_addressNo)")
                 // 아래처럼 미리 생성해놓은 constructor 사용해도 됨.
-                let query = StarModel(user_userEmail: user_userEmail, address_addressNo: address_addressNo)
+                let query = StarModel(user_userEmail: Share.userID, address_addressNo: address_addressNo, addressName: addressName, addressPhone: addressPhone, addressEmail: addressEmail, addressText: addressText, addressBirth: addressBirth, addressImage: addressImage)
                 locations.add(query) // locations 배열에 한뭉텅이씩 담기
                 print("query = \(query)")
             }

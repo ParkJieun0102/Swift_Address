@@ -11,6 +11,12 @@ class StarModel: NSObject{
     // Properties (Java의 field)
     var user_userEmail: String?
     var address_addressNo: Int?
+    var addressName: String?
+    var addressPhone: String?
+    var addressEmail: String?
+    var addressText: String?
+    var addressBirth: String?
+    var addressImage: String?
     
     // Empty constructor
     override init() {
@@ -21,5 +27,17 @@ class StarModel: NSObject{
     init(user_userEmail: String, address_addressNo: Int) {
         self.user_userEmail = user_userEmail
         self.address_addressNo = address_addressNo
+    }
+    
+    // constructor
+    init(user_userEmail: String, address_addressNo: Int, addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, addressImage: String) {
+        self.user_userEmail = user_userEmail
+        self.address_addressNo = address_addressNo
+        self.addressName = addressName
+        self.addressPhone = addressPhone
+        self.addressEmail = addressEmail
+        self.addressText = addressText
+        self.addressBirth = addressBirth
+        self.addressImage = addressImage
     }
 }

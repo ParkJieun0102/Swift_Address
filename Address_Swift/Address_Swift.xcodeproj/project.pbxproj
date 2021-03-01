@@ -17,6 +17,7 @@
 		6214450A25E5684A004278BF /* no_like.png in Resources */ = {isa = PBXBuildFile; fileRef = 6214450825E5684A004278BF /* no_like.png */; };
 		6214450E25E57130004278BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6214450D25E57130004278BF /* LoginViewController.swift */; };
 		6217548D25E7F3FA004FFAE9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217548C25E7F3FA004FFAE9 /* MyPageViewController.swift */; };
+		6246037E25ECC1C7003E3682 /* FindIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6246037D25ECC1C7003E3682 /* FindIdModel.swift */; };
 		62544DD125EBEAAB003B00B1 /* MySelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD025EBEAAB003B00B1 /* MySelectModel.swift */; };
 		62544DD525EBEBAF003B00B1 /* MyUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD425EBEBAF003B00B1 /* MyUpdateViewController.swift */; };
 		62544DD825EBFBBB003B00B1 /* MyUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */; };
@@ -63,6 +64,7 @@
 		6214450825E5684A004278BF /* no_like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_like.png; path = ../../../image/no_like.png; sourceTree = "<group>"; };
 		6214450D25E57130004278BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6217548C25E7F3FA004FFAE9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		6246037D25ECC1C7003E3682 /* FindIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdModel.swift; sourceTree = "<group>"; };
 		62544DD025EBEAAB003B00B1 /* MySelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySelectModel.swift; sourceTree = "<group>"; };
 		62544DD425EBEBAF003B00B1 /* MyUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUpdateViewController.swift; sourceTree = "<group>"; };
 		62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUpdateModel.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				62D6D0D125E3756800814F84 /* StarCountModel.swift */,
 				62544DD025EBEAAB003B00B1 /* MySelectModel.swift */,
 				62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */,
+				6246037D25ECC1C7003E3682 /* FindIdModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				62E075FD25DCAA7600580061 /* AddressUpdateModel.swift in Sources */,
 				62E075F725DCAA3A00580061 /* AddressInsertModel.swift in Sources */,
 				620B929925DCDBE40006F81A /* AddAdrViewController.swift in Sources */,
+				6246037E25ECC1C7003E3682 /* FindIdModel.swift in Sources */,
 				620B92AF25DD8B630006F81A /* LoginModel.swift in Sources */,
 				6258CC4725DC46150084F353 /* StarTableViewController.swift in Sources */,
 				62D6D0D225E3756800814F84 /* StarCountModel.swift in Sources */,

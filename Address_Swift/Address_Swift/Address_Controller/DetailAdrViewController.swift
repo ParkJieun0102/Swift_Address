@@ -33,7 +33,7 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
         
         let starjsonModel = StarCountJsonModel()
         starjsonModel.delegate = self
-        starjsonModel.downloadItems(user_userEmail: "wldms", address_addressNo: addressReceiveItem.addressNo!)
+        starjsonModel.downloadItems(user_userEmail: Share.userID, address_addressNo: addressReceiveItem.addressNo!)
         
         
         // 이미지뷰를 터치했을때 이벤트 주기 +++++++++++++++++
@@ -43,6 +43,8 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
         // ++++++++++++++++++++++++++++++++++++++++
         
         
+       
+        // ++++++++++++++++++++++++++++++++++++++++
         if addressReceiveItem.addressImage == "null" {
             // 이미지 없을때
         } else {
@@ -52,19 +54,6 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
             let data = try! Data(contentsOf: url!)
             ivProfile.image = UIImage(data: data)
         }
-        // ++++++++++++++++++++++++++++++++++++++++
-        //        let Image = addressReceiveItem.addressImage
-        //
-        //        let url = URL(string: "http://127.0.0.1:8080/swift_address/\(Image!)")
-        //        if Image == "" {
-        //            // 이미지 없을 때
-        //            ivProfile.image = UIImage(named: "logo.png")
-        //        }else{
-        //            // 이미지 있을 때
-        //            let data = try! Data(contentsOf: url!)
-        //            ivProfile.image = UIImage(data: data)
-        //        }
-        
         // ++++++++++++++++++++++++++++++++++++++++
         
         
@@ -107,10 +96,10 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
             }else{
                 print("등록")
                 imgTestNO.image = UIImage(named: "yes_like.png")
-                var userEmail = "wldms"
+               
                 let addressNo = addressReceiveItem.addressNo
                 let starInsertModel = StarInsertModel() // instance 선언
-                let result_Insert = starInsertModel.starInsertItems(user_userEmail: userEmail, address_addressNo: addressNo!)
+                let result_Insert = starInsertModel.starInsertItems(user_userEmail: Share.userID, address_addressNo: addressNo!)
                 
                 if result_Insert == true{
                     // insert 잘됨

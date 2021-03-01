@@ -15,10 +15,17 @@ protocol AddressJsonModelProtocol: class{
 
 class AddressJsonModel: NSObject{
     var delegate: AddressJsonModelProtocol!
-    let urlPath = "http://127.0.0.1:8080/swift_address/address_query_ios.jsp"
+    var urlPath = "http://127.0.0.1:8080/swift_address/address_query_ios.jsp"
     
     func downloadItems(){
-        let url = URL(string: urlPath)!
+        let urlAdd = "?userEmail=\(Share.userID)"
+        urlPath = urlPath + urlAdd
+        
+        // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 실제 url
+        let url: URL = URL(string: urlPath)! // 텍스트 글자를 url모드로 바꿔줌
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
         let task = defaultSession.dataTask(with: url){(data, response, error) in

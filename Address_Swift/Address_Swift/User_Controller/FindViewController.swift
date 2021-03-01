@@ -11,13 +11,18 @@ import UIKit
 
 class FindViewController: UIViewController {
 
+    @IBOutlet weak var FindName: UITextField!
+    @IBOutlet weak var FindPhone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func btnFindId(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

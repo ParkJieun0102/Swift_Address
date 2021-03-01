@@ -24,7 +24,7 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         // instance 선언
         let starJsonModel = StarJsonModel()
         starJsonModel.delegate = self // jsonModel에서 일 시키고, 그걸 self(여기서 쓸거임)
-        starJsonModel.downloadItems() // jsonModel에서 이 메소드 실행해서 일 처리해!
+        starJsonModel.downloadItems(userEmail: Share.userID) // jsonModel에서 이 메소드 실행해서 일 처리해!
         
         // Custom Cell 정의
         starListTableView.rowHeight = 80 // Cell 높이 지정
@@ -59,7 +59,7 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         print("viewWillAppear")
         let starJsonModel = StarJsonModel() // protocol연결된 클래스 객체 선언
         starJsonModel.delegate = self // 일 처리 시킬건데, 이 화면에서 시킬거고
-        starJsonModel.downloadItems() // jsonModel의 downloadItems를 처리하게 할거야.
+        starJsonModel.downloadItems(userEmail: Share.userID) // jsonModel의 downloadItems를 처리하게 할거야.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,7 +89,8 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         // cell 정의
         // 현재 배열값으로 들어온 cell 풀어서 정의.
         let item: StarModel = StarItem[indexPath.row] as! StarModel
-        cell.lblName?.text = "\(item.address_addressNo!)"
+        cell.lblName?.text = "\(item.addressName!)"
+        cell.lblPhone?.text = "\(item.addressPhone!)"
         
         
         return cell
@@ -147,5 +148,7 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
      // Pass the selected object to the new view controller.
      }
      */
+    
+   // *************************************************************************
     
 }

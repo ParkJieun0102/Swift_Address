@@ -122,18 +122,6 @@ class MainTableViewController: UITableViewController, AddressJsonModelProtocol {
             detailAdrViewController.addressReceiveItem = MainItem[(indexPath! as NSIndexPath).row] as! AddressModel
             
             
-            // 변수 item의 타입은 Students
-            // let item: Students = studentsList[(indexPath! as NSIndexPath).row] // 방법 1
-            // bean = 담아져오는 변수 이름
-            // let item: DBModel = feedItem[indexPath!.row] as! DBModel // 방법 2
-            
-            //            let scode = item.scode!
-            //            let sname = item.sname!
-            //            let sdept = item.sdept!
-            //            let sphone = item.sphone!
-            //
-            // detailView에 receiveItems라는 함수에 () 내용 담아서 데이터 넘겨주기.
-            //detailView.receiveItems(scode, sname, sdept, sphone)
         }
      }
     // *************************************************************************

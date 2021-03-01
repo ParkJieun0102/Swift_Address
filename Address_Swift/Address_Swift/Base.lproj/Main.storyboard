@@ -509,11 +509,51 @@
                                     <segment title="비밀번호 찾기"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-ds-j2O">
+                                <rect key="frame" x="0.0" y="762" width="390" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87144650260000001" green="0.67054787130000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="아이디 찾기"/>
+                                <connections>
+                                    <action selector="btnFindId:" destination="8el-aN-BZ5" eventType="touchUpInside" id="7at-AK-dgT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgP-L7-6Fb">
+                                <rect key="frame" x="40" y="227" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SQ-qd-Vqw">
+                                <rect key="frame" x="40" y="304" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8y-BE-xSJ">
+                                <rect key="frame" x="40" y="247" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="연락처를 입력해주세요 ( - 제외 )" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-Kw-3lJ">
+                                <rect key="frame" x="40" y="337" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qVL-WT-46b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="아이디/비밀번호 찾기" id="HcQ-tC-jwx"/>
+                    <connections>
+                        <outlet property="FindName" destination="Z8y-BE-xSJ" id="Dv5-1r-0Mt"/>
+                        <outlet property="FindPhone" destination="dWJ-Kw-3lJ" id="C5a-8G-4H8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rys-s4-mxg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -730,7 +770,7 @@
                                     <outlet property="btnStar" destination="N8N-TA-3g9" id="L6J-D7-7A2"/>
                                     <outlet property="lblName" destination="ztV-1n-lQE" id="mJ0-Ke-aao"/>
                                     <outlet property="lblPhone" destination="Lcp-XW-Cen" id="4HA-AY-7MJ"/>
-                                    <segue destination="yUL-St-neV" kind="show" identifier="" id="qKW-ki-2wV"/>
+                                    <segue destination="yUL-St-neV" kind="show" identifier="starDetail" id="qKW-ki-2wV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
