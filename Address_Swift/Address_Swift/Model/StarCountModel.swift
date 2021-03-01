@@ -10,7 +10,7 @@ import Foundation
 // protocol은 DB의 table과 연결되어있기 때문에 필요한 것.
 // insertModel에선 필요없다 (?)
 protocol StarCountJsonModelProtocol: class{
-    func starItemDownloaded(items: Int) // <- 여기에 담은 아이템을 아래 delegate에서 사용하고, tableView에서 궁극적으로 사용.
+    func starItemDownloaded(items: Int)
 }
 
 class StarCountJsonModel: NSObject{
@@ -56,7 +56,6 @@ class StarCountJsonModel: NSObject{
         // json은 key와 value값이 필요하므로 Dictionary 타입 사용
         var jsonElement = NSDictionary()
         
-        let locations = NSMutableArray()
         
         print("for전")
         

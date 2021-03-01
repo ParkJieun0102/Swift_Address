@@ -81,7 +81,7 @@ class StarJsonModel: NSObject{
                let addressImage = jsonElement["addressImage"] as? String{
                 print("addressNO:\(address_addressNo)")
                 // 아래처럼 미리 생성해놓은 constructor 사용해도 됨.
-                let query = StarModel(user_userEmail: Share.userID, address_addressNo: address_addressNo, addressName: addressName, addressPhone: addressPhone, addressEmail: addressEmail, addressText: addressText, addressBirth: addressBirth, addressImage: addressImage)
+                let query = StarModel(user_userEmail: user_userEmail, address_addressNo: address_addressNo, addressName: addressName, addressPhone: addressPhone, addressEmail: addressEmail, addressText: addressText, addressBirth: addressBirth, addressImage: addressImage)
                 locations.add(query) // locations 배열에 한뭉텅이씩 담기
                 print("query = \(query)")
             }

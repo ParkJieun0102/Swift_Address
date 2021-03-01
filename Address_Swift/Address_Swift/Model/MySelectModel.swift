@@ -7,19 +7,21 @@
 
 import Foundation
 
-// protocol은 DB의 table과 연결되어있기 때문에 필요한 것.
-// insertModel에선 필요없다 (?)
 protocol MyJsonModelProtocol: class{
-    func myItemDownloaded(items: NSArray) // <- 여기에 담은 아이템을 아래 delegate에서 사용하고, tableView에서 궁극적으로 사용.
+    func myItemDownloaded(items: UserModel)
 }
 
 class MySelectModel: NSObject{
     var delegate: MyJsonModelProtocol!
     let urlPath = "http://127.0.0.1:8080/swift_address/myQuery_ios.jsp?userEmail=\(Share.userID)"
     
+    var resultMy = ""
+    
+    
     func downloadItems(){
         let url = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
         
         let task = defaultSession.dataTask(with: url){(data, response, error) in
             if error != nil{
@@ -35,6 +37,7 @@ class MySelectModel: NSObject{
     
     func parseJSON(_ data: Data){
         var jsonResult = NSArray()
+        var query: UserModel = UserModel()
         
         do{
             // JSON 모델 탈피(?)
@@ -48,8 +51,6 @@ class MySelectModel: NSObject{
         
         // json은 key와 value값이 필요하므로 Dictionary 타입 사용
         var jsonElement = NSDictionary()
-        
-        let locations = NSMutableArray()
         
         print("나의 정보 전")
         
@@ -69,15 +70,13 @@ class MySelectModel: NSObject{
                let userName = jsonElement["userName"] as? String,
                let userPhone = jsonElement["userPhone"] as? String{
                 // 아래처럼 미리 생성해놓은 constructor 사용해도 됨.
-                let query = UserModel(userEmail: userEmail, userPw: userPw, userName: userName, userPhone: userPhone)
-                locations.add(query) // locations 배열에 한뭉텅이씩 담기
-                print("query = \(query)")
+             query = UserModel(userEmail: userEmail, userPw: userPw, userName: userName, userPhone: userPhone)
+                
             }
             
-            // locations.add(query) // locations 배열에 한뭉텅이씩 담기
         }
         DispatchQueue.main.async(execute: {() -> Void in
-            self.delegate.myItemDownloaded(items: locations)
+            self.delegate.myItemDownloaded(items: query)
             
         })
     }

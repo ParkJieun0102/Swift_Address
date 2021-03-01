@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, LoginJsonModelProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.title = "로그인 화면"
         btnRound.layer.cornerRadius = 15
         btnRound1.layer.cornerRadius = 15
         

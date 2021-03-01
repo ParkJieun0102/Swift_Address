@@ -50,7 +50,7 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
         } else {
             // 이미지 있을때
             let url = URL(string: "http://127.0.0.1:8080/swift_address/\(addressReceiveItem.addressImage!)")
-            print("url : \(url)")
+            
             let data = try! Data(contentsOf: url!)
             ivProfile.image = UIImage(data: data)
         }
@@ -149,7 +149,6 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
     
     
     @IBAction func btnCall(_ sender: UIButton) {
-        let phone = lblPhone.text
         // 전화번호 지정
         if let phoneCallURL = URL(string: lblPhone.text!) {
             let application:UIApplication = UIApplication.shared
@@ -158,14 +157,6 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol {
             }
         }
         
-        //        // text 값 받기 ==> 안됨
-        //        let phoneNum = lblName.text
-        //        if let phoneCallURL = URL(string: "tel://\(String(describing: phoneNum))") {
-        //            let application:UIApplication = UIApplication.shared
-        //            if (application.canOpenURL(phoneCallURL)) {
-        //                application.open(phoneCallURL, options: [:], completionHandler: nil)
-        //            }
-        //        }
         
     }
     

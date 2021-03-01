@@ -7,28 +7,35 @@
 
 import UIKit
 
-class MyUpdateViewController: UIViewController {
-    
-
-    
+class MyUpdateViewController: UIViewController, MyJsonModelProtocol {
+   
     @IBOutlet weak var lblmyEmail: UILabel!
     @IBOutlet weak var txtMyName: UITextField!
     @IBOutlet weak var txtMyPw: UITextField!
     @IBOutlet weak var txtMyPhone: UITextField!
-    
     
     var userReceiveItem = UserModel() // AddressModel 객체 선언
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblmyEmail.text = Share.userID
-        txtMyName.text = userReceiveItem.userName
-        txtMyPw.text = userReceiveItem.userPw
-        txtMyPhone.text = userReceiveItem.userPhone
+        let mySelectModel = MySelectModel()
+        mySelectModel.delegate = self
+        mySelectModel.downloadItems()
         
     }
     
+    
+    func myItemDownloaded(items: UserModel) {
+        userReceiveItem = items
+        print("나의 정보 : \(items.userName!)")
+        
+        lblmyEmail.text = Share.userID
+        txtMyName.text = userReceiveItem.userName!
+        txtMyPw.text = userReceiveItem.userPw!
+        txtMyPhone.text = userReceiveItem.userPhone!
+        
+    }
 
     @IBAction func btnMyUpdate(_ sender: UIButton) {
         let userPw = txtMyPw.text

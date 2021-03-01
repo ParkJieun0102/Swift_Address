@@ -46,7 +46,7 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         } else {
             // 이미지 있을때
             let url = URL(string: "http://127.0.0.1:8080/swift_address/\(AddressReceiveItem.addressImage!)")
-            print("url : \(url)")
+            
             let data = try! Data(contentsOf: url!)
             ivProfile.image = UIImage(data: data)
         }

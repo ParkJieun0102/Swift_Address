@@ -15,7 +15,6 @@ class AddressInsertModel: NSObject{
     
     // insertItems의 () 매개변수들은 AddViewController에서 값을 넣어줘서 함께 실행할거고 → Bool로 실행 여부 확인할거야.
     func addressInsertItems(addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, at filepath: URL, completionHandler: @escaping(Data?, URLResponse?) -> Void) {
-        var result: Bool = true
         let urlAdd = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)"
         urlPath = urlPath + urlAdd
         

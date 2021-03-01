@@ -24,8 +24,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
     }
     
     @IBAction func btnSignUp(_ sender: UIButton) {

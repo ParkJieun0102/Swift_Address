@@ -18,6 +18,8 @@
 		6214450E25E57130004278BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6214450D25E57130004278BF /* LoginViewController.swift */; };
 		6217548D25E7F3FA004FFAE9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217548C25E7F3FA004FFAE9 /* MyPageViewController.swift */; };
 		6246037E25ECC1C7003E3682 /* FindIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6246037D25ECC1C7003E3682 /* FindIdModel.swift */; };
+		6246038125ECE558003E3682 /* FIndPwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6246038025ECE558003E3682 /* FIndPwModel.swift */; };
+		6246038425ECE887003E3682 /* IDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6246038325ECE887003E3682 /* IDModel.swift */; };
 		62544DD125EBEAAB003B00B1 /* MySelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD025EBEAAB003B00B1 /* MySelectModel.swift */; };
 		62544DD525EBEBAF003B00B1 /* MyUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD425EBEBAF003B00B1 /* MyUpdateViewController.swift */; };
 		62544DD825EBFBBB003B00B1 /* MyUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */; };
@@ -65,6 +67,8 @@
 		6214450D25E57130004278BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6217548C25E7F3FA004FFAE9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		6246037D25ECC1C7003E3682 /* FindIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdModel.swift; sourceTree = "<group>"; };
+		6246038025ECE558003E3682 /* FIndPwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIndPwModel.swift; sourceTree = "<group>"; };
+		6246038325ECE887003E3682 /* IDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDModel.swift; sourceTree = "<group>"; };
 		62544DD025EBEAAB003B00B1 /* MySelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySelectModel.swift; sourceTree = "<group>"; };
 		62544DD425EBEBAF003B00B1 /* MyUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUpdateViewController.swift; sourceTree = "<group>"; };
 		62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUpdateModel.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				62544DD025EBEAAB003B00B1 /* MySelectModel.swift */,
 				62544DD725EBFBBB003B00B1 /* MyUpdateModel.swift */,
 				6246037D25ECC1C7003E3682 /* FindIdModel.swift */,
+				6246038025ECE558003E3682 /* FIndPwModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				62E0760225DCAAE800580061 /* UserModel.swift */,
 				62E0760925DCAB1400580061 /* AddressModel.swift */,
 				628E59C525E2B81400FD2B88 /* StarModel.swift */,
+				6246038325ECE887003E3682 /* IDModel.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				6214450E25E57130004278BF /* LoginViewController.swift in Sources */,
 				62F0160425E8F039007BB073 /* ThemeViewController.swift in Sources */,
 				62E075FD25DCAA7600580061 /* AddressUpdateModel.swift in Sources */,
+				6246038125ECE558003E3682 /* FIndPwModel.swift in Sources */,
 				62E075F725DCAA3A00580061 /* AddressInsertModel.swift in Sources */,
 				620B929925DCDBE40006F81A /* AddAdrViewController.swift in Sources */,
 				6246037E25ECC1C7003E3682 /* FindIdModel.swift in Sources */,
@@ -343,6 +350,7 @@
 				620B92A325DCE2A40006F81A /* UpdateViewController.swift in Sources */,
 				620B92AC25DD82920006F81A /* SignUpModel.swift in Sources */,
 				6271925B25DBC57200B8A12A /* SceneDelegate.swift in Sources */,
+				6246038425ECE887003E3682 /* IDModel.swift in Sources */,
 				6258CC3B25DC45A30084F353 /* FindViewController.swift in Sources */,
 				62E075FA25DCAA5600580061 /* AddressDeleteModel.swift in Sources */,
 				6258CC4125DC45FB0084F353 /* MainTableViewController.swift in Sources */,
