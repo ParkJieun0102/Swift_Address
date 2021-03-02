@@ -249,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GQ-Pk-zCm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3535" y="-611"/>
+            <point key="canvasLocation" x="3492" y="-480"/>
         </scene>
         <!--상세보기-->
         <scene sceneID="sO8-y1-BXN">
@@ -576,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rys-s4-mxg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390.7692307692307" y="865.87677725118476"/>
+            <point key="canvasLocation" x="1382" y="805"/>
         </scene>
         <!--회원가입-->
         <scene sceneID="nLL-iB-oxJ">
@@ -693,7 +693,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHd-Jd-dmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341.5384615384614" y="865.87677725118476"/>
+            <point key="canvasLocation" x="2355" y="805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d5W-O1-gG0">
@@ -807,7 +807,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwA-fG-WkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4323" y="522"/>
+            <point key="canvasLocation" x="4322" y="473"/>
         </scene>
         <!--마이페이지-->
         <scene sceneID="KTe-TM-hL3">
@@ -857,7 +857,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKa-tO-Gmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3287.6923076923076" y="865.87677725118476"/>
+            <point key="canvasLocation" x="3375" y="805"/>
         </scene>
         <!--프로필 수정-->
         <scene sceneID="UNm-XP-mpl">
@@ -874,10 +874,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="qkrwldms011@naver.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-uR-SPt">
-                                <rect key="frame" x="47" y="181" width="299" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userEmail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-uR-SPt">
+                                <rect key="frame" x="33" y="181" width="324" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -958,7 +958,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMg-mv-MUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2933.8461538461538" y="1607.345971563981"/>
+            <point key="canvasLocation" x="3000" y="1515.6398104265402"/>
         </scene>
         <!--테마 변경-->
         <scene sceneID="TGR-nh-Goh">
@@ -1021,7 +1021,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhv-C8-GO3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616.9230769230767" y="1607.345971563981"/>
+            <point key="canvasLocation" x="3785" y="1516"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

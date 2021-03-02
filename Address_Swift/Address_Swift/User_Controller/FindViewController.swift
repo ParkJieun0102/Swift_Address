@@ -37,21 +37,36 @@ class FindViewController: UIViewController, IdJsonModelProtocol, PwJsonModelProt
     func idItemDownloaded(items: String) {
         resultID = items
         print("아이디는? \(items)")
+        if resultID != ""{
+            let resultAlert = UIAlertController(title: "🌟확인🌟", message: "\(FindName.text!)님의 아이디는 : \(resultID)", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
+        }else{
+            let resultAlert = UIAlertController(title: "🌟경고🌟", message: "아이디가 존재하지 않습니다. \n정보를 다시 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
+        }
         
-        let resultAlert = UIAlertController(title: "찾음", message: "\(FindName.text!)님의 아이디는 : \(resultID)", preferredStyle: UIAlertController.Style.alert)
-        let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-        resultAlert.addAction(onAction)
-        present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
     }
     
     func pwItemDownloaded(items: String) {
         resultPW = items
         print("아이디는? \(items)")
         
-        let resultAlert = UIAlertController(title: "찾음", message: "\(FindName.text!)님의 비밀번호는 : \(resultPW)", preferredStyle: UIAlertController.Style.alert)
-        let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-        resultAlert.addAction(onAction)
-        present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
+        if resultPW != "" {
+            let resultAlert = UIAlertController(title: "🌟확인🌟", message: "\(FindName.text!)님의 비밀번호는 : \(resultPW)", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
+        }else{
+            let resultAlert = UIAlertController(title: "🌟경고🌟", message: "비밀번호가 존재하지 않습니다. \n정보를 다시 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil) // 열심히 만든 알럿창 보여주는 함수
+        }
+        
     }
     
     @IBAction func btnFindId(_ sender: UIButton) {

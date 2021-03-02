@@ -17,11 +17,14 @@ class MyPageViewController: UIViewController {
         
         // 로그아웃 기능 넣기
         @IBAction func btnLogout(_ sender: UIButton) {
+            
+            navigationController?.popToRootViewController(animated: true)
         }
         
         
         // 회원탈퇴 기능 넣기
         @IBAction func btnSignout(_ sender: UIButton) {
+            navigationController?.popToRootViewController(animated: true)
         }
         /*
          

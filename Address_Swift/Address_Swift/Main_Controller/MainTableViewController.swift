@@ -16,7 +16,7 @@ class MainTableViewController: UITableViewController, AddressJsonModelProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = Share.userID
+        self.tabBarController?.title = "다붓다붓"
 //        self.title = Share.userID
         self.tabBarController?.navigationItem.setHidesBackButton(true, animated: true)
         
