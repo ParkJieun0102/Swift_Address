@@ -7,15 +7,19 @@
 
 import UIKit
 
-class AddAdrViewController: UIViewController,UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-
+class AddAdrViewController: UIViewController,UIImagePickerControllerDelegate & UINavigationControllerDelegate, AdrMaxModelProtocol {
     
+
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtText: UITextField!
     @IBOutlet weak var txtBirth: UITextField!
     
+    
+    var check = 0
+    
+    var adrMax = 0
     
     let imagePickerController = UIImagePickerController()
     var imageURL: URL?
@@ -36,6 +40,7 @@ class AddAdrViewController: UIViewController,UIImagePickerControllerDelegate & U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            check = 1
             ivProfile.image = image
             
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
@@ -54,11 +59,18 @@ class AddAdrViewController: UIViewController,UIImagePickerControllerDelegate & U
         }
     }
     
-    
-    
-
-    
-    
+    // Max 값을 위한
+    func adrMaxItemDownloaded(items: Int) {
+        adrMax = items
+        print("최대값은 ? : \(adrMax)")
+        
+        let addressInsertModel = AddressInsertModel() // instance 선언
+        addressInsertModel.adrInsert03Items(user_userEmail: Share.userID, address_addressNo: adrMax)
+        DispatchQueue.main.async { () -> Void in
+            self.navigationController?.popViewController(animated: true) // 현재화면 종료
+        }
+        
+    }
     
     
     @IBAction func btnNewAddress(_ sender: UIButton) {
@@ -69,11 +81,23 @@ class AddAdrViewController: UIViewController,UIImagePickerControllerDelegate & U
         let addressBirth = txtBirth.text
         
         let addressInsertModel = AddressInsertModel() // instance 선언
-        addressInsertModel.addressInsertItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, at: imageURL!, completionHandler: {_, _ in
-            DispatchQueue.main.async { () -> Void in
-                self.navigationController?.popViewController(animated: true)
-            }
-        })
+        if check == 1 {
+            addressInsertModel.addressInsertItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, at: imageURL!, completionHandler: {_, _ in
+                DispatchQueue.main.async { () -> Void in
+                    addressInsertModel.delegate = self
+                    addressInsertModel.adrMaxItems()
+                    
+                }
+            })
+        } else {
+            addressInsertModel.addressInsertXItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, completionHandler: {_, _ in
+                DispatchQueue.main.async { () -> Void in
+                    addressInsertModel.delegate = self
+                    addressInsertModel.adrMaxItems()
+                }
+            })
+        }
+        
         
 //        if result == true{
             // insert 잘됨

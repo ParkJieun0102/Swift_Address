@@ -15,7 +15,7 @@ protocol LoginJsonModelProtocol: class{
 
 class LoginJsonModel: NSObject{
     var delegate: LoginJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/loginCheck.jsp"
+    var urlPath = "http:/" + Share.localIP02 + ":8080/swift_address/loginCheck.jsp"
     var resultNo = 3
     
     func downloadItems(userEmail: String, userPw: String){

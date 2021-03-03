@@ -13,7 +13,7 @@ protocol MyJsonModelProtocol: class{
 
 class MySelectModel: NSObject{
     var delegate: MyJsonModelProtocol!
-    let urlPath = "http://127.0.0.1:8080/swift_address/myQuery_ios.jsp?userEmail=\(Share.userID)"
+    let urlPath = "http://" + Share.localIP02 + ":8080/swift_address/myQuery_ios.jsp?userEmail=\(Share.userID)"
     
     var resultMy = ""
     

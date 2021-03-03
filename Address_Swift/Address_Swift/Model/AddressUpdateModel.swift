@@ -9,9 +9,9 @@ import Foundation
 
 class AddressUpdateModel: NSObject{
     
-    var urlPath = "http://127.0.0.1:8080/swift_address/addressUpdate_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/adrUpdate01_ios.jsp"
     
-    // insertItems의 () 매개변수들은 AddViewController에서 값을 넣어줘서 함께 실행할거고 → Bool로 실행 여부 확인할거야.
+    // 사진 있을 때
     func addressUpdateItems(addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, addressNo: Int, at filepath: URL, completionHandler: @escaping(Data?, URLResponse?) -> Void)  {
         let urlAdd = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)&addressNo=\(addressNo)"
         urlPath = urlPath + urlAdd
@@ -86,4 +86,24 @@ class AddressUpdateModel: NSObject{
     }
     
     
+    
+    
+    // 사진 없을 때
+    func addressUpdateXItems(addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, addressNo: Int, completionHandler: @escaping(Data?, URLResponse?) -> Void)  {
+        let urlAdd = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)&addressNo=\(addressNo)"
+        urlPath = urlPath + urlAdd
+        
+        // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
+        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 실제 url
+        let url: URL = URL(string: urlPath)! // 텍스트 글자를 url모드로 바꿔줌
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        // task
+        let task = defaultSession.dataTask(with: url){ data, res, _ in
+            completionHandler(data, res)
+        }
+        task.resume() // resume()을 해줘야 task가 실행 된다.
+    } // func END
 }

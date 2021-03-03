@@ -18,12 +18,15 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var txtText: UITextField!
     @IBOutlet weak var txtBirth: UITextField!
     
+    // 입력한게 있는지 없는지
+    var check = 0
+    
     var delegate : UpdateDelegate?
     var AddressReceiveItem = AddressModel()
     
     let imagePickerController = UIImagePickerController()
     var imageURL: URL?
-    
+    // 현재 이미지가 있는지 없는지
     var checkImage = 0
     @IBOutlet weak var ivProfile: UIImageView!
     
@@ -46,25 +49,16 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
 
         if AddressReceiveItem.addressImage == "null" {
             // 이미지 없을때
+            checkImage = 2
         } else {
             // 이미지 있을때
+            checkImage = 1
             let url = URL(string: "http://127.0.0.1:8080/swift_address/\(AddressReceiveItem.addressImage!)")
             
             let data = try! Data(contentsOf: url!)
             ivProfile.image = UIImage(data: data)
         }
         
-//        let Image = AddressReceiveItem.addressImage
-//
-//        let url = URL(string: "http://127.0.0.1:8080/swift_address/\(Image!)")
-//        if Image == "" {
-//            // 이미지 없을 때
-//            ivProfile.image = UIImage(named: "logo.png")
-//        }else{
-//            // 이미지 있을 때
-//            let data = try! Data(contentsOf: url!)
-//            ivProfile.image = UIImage(data: data)
-//        }
     }
     
     
@@ -72,7 +66,8 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            checkImage = 2
+            check = 1
+            
             ivProfile.image = image
             
             imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
@@ -103,20 +98,49 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         
         let addressUpdateModel = AddressUpdateModel() // instance 선언
-        // 이미지가 있을 때
-        if checkImage == 2 {
+        
+        if checkImage == 1 && check == 0 {
+            // 원래 이미지가 존재하고 갤러리의 이미지도 선택하지 않았으므로 원래 이미지를 다시 업데이트 해준다.
+            addressUpdateModel.addressUpdateXItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, addressNo: addressNo!, completionHandler: {_, _ in
+                DispatchQueue.main.async { () -> Void in
+                    if self.delegate != nil{
+                        self.delegate?.reloadData()
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            })
+        }else if checkImage == 1 && check == 1 {
+            // 원래 이미지가 존재하지만 갤러리에서 이미지를 선택하였으므로 선택한 imageurl을 사용한다.
             addressUpdateModel.addressUpdateItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, addressNo: addressNo!, at: imageURL!, completionHandler: {_, _ in
                 DispatchQueue.main.async { () -> Void in
                     if self.delegate != nil{
                         self.delegate?.reloadData()
                         self.navigationController?.popViewController(animated: true)
                     }
-                    
                 }
             })
             
-        }else {
+        }else if checkImage == 0 && check == 0 {
+            // 원래 이미지가 존재하지 않고 갤러리의 이미지도 선택하지 않았으므로 "null"로 업데이트 해준다.
+            addressUpdateModel.addressUpdateXItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, addressNo: addressNo!, completionHandler: {_, _ in
+                DispatchQueue.main.async { () -> Void in
+                    if self.delegate != nil{
+                        self.delegate?.reloadData()
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            })
             
+        }else if checkImage == 0 && check == 1{
+            // 원래 이미지가 존재하지 않지만 갤러리에서 이미지를 선택하였으므로 선택한 imageurl을 사용한다.
+            addressUpdateModel.addressUpdateItems(addressName: addressName!, addressPhone: addressPhone!, addressEmail: addressEmail!, addressText: addressText!, addressBirth: addressBirth!, addressNo: addressNo!, at: imageURL!, completionHandler: {_, _ in
+                DispatchQueue.main.async { () -> Void in
+                    if self.delegate != nil{
+                        self.delegate?.reloadData()
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            })
         }
         
     }

@@ -14,6 +14,8 @@ protocol MyCellDelegate {
 
 class TableViewCell: UITableViewCell {
     
+    @IBOutlet weak var hiddenNo: UILabel!
+    
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
     

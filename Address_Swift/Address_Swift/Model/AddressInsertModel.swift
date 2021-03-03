@@ -6,30 +6,38 @@
 //
 
 import Foundation
-
+protocol AdrMaxModelProtocol: class{
+    func adrMaxItemDownloaded(items: Int)
+}
 
 class AddressInsertModel: NSObject{
     
-    var urlPath = "http://127.0.0.1:8080/swift_address/addressInsert_ios.jsp"
+    // 01 address 테이블 에 입력
+    var urlPath01 = "http://" + Share.localIP02 + ":8080/swift_address/addressInsert01_ios.jsp"
     
+    // 02 Max 값 구하기
+    var delegate: AdrMaxModelProtocol!
+    var urlPath02 = "http://" + Share.localIP02 + ":8080/swift_address/addressInsert02_ios.jsp"
+    var adrMax = 0
     
+    // 03 register 테이블 에 입력
+    var urlPath03 = "http://" + Share.localIP02 + ":8080/swift_address/addressInsert03_ios.jsp"
+    
+    // 01 시작 ***********************************************************************
     // insertItems의 () 매개변수들은 AddViewController에서 값을 넣어줘서 함께 실행할거고 → Bool로 실행 여부 확인할거야.
     func addressInsertItems(addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, at filepath: URL, completionHandler: @escaping(Data?, URLResponse?) -> Void) {
-        let urlAdd = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)"
-        urlPath = urlPath + urlAdd
+        let urlAdd01 = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)&check=1"
+        urlPath01 = urlPath01 + urlAdd01
         
         // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
-        urlPath = urlPath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        urlPath01 = urlPath01.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         // 실제 url
-        let url: URL = URL(string: urlPath)! // 텍스트 글자를 url모드로 바꿔줌
+        let url: URL = URL(string: urlPath01)! // 텍스트 글자를 url모드로 바꿔줌
         let parameters = [
             "name" : ""
-//            "content" : content,
-//            "User_uSeqno" : String(USERSEQNO),
-//            "Recipe_rSeqno" : String(RECIPESEQNO)
         ]
-
+        
         // 경로로부터 요청을 생성한다. 이 때 Content-Type 헤더 필드를 변경한다.
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -43,7 +51,8 @@ class AddressInsertModel: NSObject{
             }
             task.resume()
         }
-    } // func END
+    } // func END (addressInsertItems)
+    
     func buildBody(with fileURL: URL, parameters: [String: String]?) -> Data? {
         // 파일을 읽을 수 없다면 nil을 리턴
         guard let filedata = try? Data(contentsOf: fileURL) else {
@@ -57,9 +66,9 @@ class AddressInsertModel: NSObject{
         let boundary = "XXXXX"
         let mimetype = "image/jpeg"
         let headerLines = ["--\(boundary)",
-            "Content-Disposition: form-data; name=\"file\"; filename=\"\(fileURL.lastPathComponent)\"",
-            "Content-Type: \(mimetype)",
-            "\r\n"]
+                           "Content-Disposition: form-data; name=\"file\"; filename=\"\(fileURL.lastPathComponent)\"",
+                           "Content-Type: \(mimetype)",
+                           "\r\n"]
         var data = headerLines.joined(separator:"\r\n").data(using:.utf8)!
         
         // 그 다음에 파일 데이터를 붙이고
@@ -72,18 +81,113 @@ class AddressInsertModel: NSObject{
         // 내용\r\n
         let lines = ["--\(boundary)","Content-Disposition: form-data; name=\"name\"\r\n","values\r\n"]
         data.append(contentsOf: lines.joined(separator: "\r\n").data(using: .utf8)!)
-        /*
-        if parameters != nil {
-            for (key, value) in parameters! {
-                let lines = ["--\(boundary)","Content-Disposition: form-data; name=\"\(key)\"\r\n","\(value)\r\n"]
-                data.append(contentsOf: lines.joined(separator: "\r\n").data(using: .utf8)!)
-            }
-        }
-        */
         
         // 마지막으로 데이터의 끝임을 알리는 바운더리를 한 번 더 사용한다.
         // 이는 '새로운 개행'이 필요하므로 앞에 \r\n이 있어야 함에 유의 한다.
         data.append(contentsOf: "\r\n--\(boundary)--".data(using:.utf8)!)
         return data
+    }// func END (buildBody)
+    
+    
+    // 사진 없을 때
+    func addressInsertXItems(addressName: String, addressPhone: String, addressEmail: String, addressText: String, addressBirth: String, completionHandler: @escaping(Data?, URLResponse?) -> Void) {
+        let urlAdd01 = "?addressName=\(addressName)&addressPhone=\(addressPhone)&addressEmail=\(addressEmail)&addressText=\(addressText)&addressBirth=\(addressBirth)&check=2"
+        urlPath01 = urlPath01 + urlAdd01
+        
+        // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
+        urlPath01 = urlPath01.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 실제 url
+        let url: URL = URL(string: urlPath01)! // 텍스트 글자를 url모드로 바꿔줌
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        // task
+        let task = defaultSession.dataTask(with: url){ data, res, _ in
+            completionHandler(data, res)
+        }
+        task.resume()
+    } // func END
+    
+    // 01 끝 ***********************************************************************
+    
+    
+    // 02 시작 ***********************************************************************
+    func adrMaxItems(){
+        
+        let url = URL(string: urlPath02)!
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to download data")
+            } else {
+                print("Data is downloading")
+                // URLSession에 들어있는 data를 parsing
+                self.parseJSON(data!)
+            }
+        }
+        task.resume() // 위의 task를 실행해주는 함수.
     }
+    
+    func parseJSON(_ data: Data){
+        var jsonResult = NSArray()
+        
+        do{
+            // JSON 모델 탈피(?)
+            // JSON 파일 불러오는 함수 → JSONSerialization
+            // options ???
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        // json은 key와 value값이 필요하므로 Dictionary 타입 사용
+        var jsonElement = NSDictionary()
+        print("Max")
+        
+        for i in 0..<jsonResult.count{
+            // jsonResult[i]번째를 NSDictionary 타입으로 변환
+            jsonElement = jsonResult[i] as! NSDictionary
+            
+            //  scode는 jsonElement의 code값인데, String으로 형변환 시켜.
+            if let addressNo = jsonElement["addressNo"] as? Int{
+                self.adrMax = addressNo
+            }
+        }
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.delegate.adrMaxItemDownloaded(items: self.adrMax)
+        })
+    }
+    // 02 끝 ***********************************************************************
+    
+    
+    // 03 시작 ***********************************************************************
+    func adrInsert03Items(user_userEmail: String, address_addressNo: Int) -> Bool {
+        var result: Bool = true
+        let urlAdd03 = "?user_userEmail=\(user_userEmail)&address_addressNo=\(address_addressNo)"
+        urlPath03 = urlPath03 + urlAdd03
+        
+        // 한글 url encoding → 한글 글씨가 %로 바뀌어서 날아감.
+        urlPath03 = urlPath03.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 실제 url
+        let url: URL = URL(string: urlPath03)! // 텍스트 글자를 url모드로 바꿔줌
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        // task
+        let task = defaultSession.dataTask(with: url){(data, response, error) in
+            if error != nil{
+                print("Failed to insert data") // 앱스토어에 올릴때는 print 부분 다 지워야 함
+                result = false
+            } else {
+                print("Data is inserted!")
+                result = true
+            }
+        }
+        task.resume() // resume()을 해줘야 task가 실행 된다.
+        return result
+    } // func END
+    // 01 끝 ***********************************************************************
 }

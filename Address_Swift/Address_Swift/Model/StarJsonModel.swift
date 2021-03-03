@@ -15,7 +15,7 @@ protocol StarJsonModelProtocol: class{
 
 class StarJsonModel: NSObject{
     var delegate: StarJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/star_query_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/star_query_ios.jsp"
     
     func downloadItems(userEmail: String){
         let urlAdd = "?userEmail=\(Share.userID)"

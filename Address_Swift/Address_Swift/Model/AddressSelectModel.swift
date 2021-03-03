@@ -13,7 +13,7 @@ protocol AdrSelectJsonModelProtocol: class{
 
 class AddressSelectModel: NSObject{
     var delegate: AdrSelectJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/AdrSelect_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/AdrSelect_ios.jsp"
     
     var resultMy = ""
     

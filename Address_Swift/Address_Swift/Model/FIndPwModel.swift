@@ -15,7 +15,7 @@ protocol PwJsonModelProtocol: class{
 
 class FindPwModel: NSObject{
     var delegate: PwJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/findPW_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/findPW_ios.jsp"
     var resultPW = ""
     
     func downloadItems(userName: String, userPhone: String, userEmail: String){

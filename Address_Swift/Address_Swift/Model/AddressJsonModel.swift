@@ -15,7 +15,7 @@ protocol AddressJsonModelProtocol: class{
 
 class AddressJsonModel: NSObject{
     var delegate: AddressJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/address_query_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/address_query_ios.jsp"
     
     func downloadItems(){
         let urlAdd = "?userEmail=\(Share.userID)"

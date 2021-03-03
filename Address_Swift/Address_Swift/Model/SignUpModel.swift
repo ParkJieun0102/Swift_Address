@@ -9,9 +9,9 @@ import Foundation
 
 class SignUpModel: NSObject{
     
-    var urlPath = "http://127.0.0.1:8080/swift_address/memberInsertReturn.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/memberInsertReturn.jsp"
     
-    var urlPathCheck = "http://127.0.0.1:8080/swift_address/idCheck.jsp"
+    var urlPathCheck = "http://" + Share.localIP02 + ":8080/swift_address/idCheck.jsp"
     
     
     // insertItems의 () 매개변수들은 AddViewController에서 값을 넣어줘서 함께 실행할거고 → Bool로 실행 여부 확인할거야.

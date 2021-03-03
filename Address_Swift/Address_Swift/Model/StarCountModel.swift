@@ -15,7 +15,7 @@ protocol StarCountJsonModelProtocol: class{
 
 class StarCountJsonModel: NSObject{
     var delegate: StarCountJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/star_count_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/star_count_ios.jsp"
     var resultNo = 3
     
     func downloadItems(user_userEmail: String, address_addressNo: Int){

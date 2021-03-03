@@ -783,10 +783,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hidden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toK-gr-9c4">
+                                            <rect key="frame" x="160" y="29" width="53" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="btnStar" destination="N8N-TA-3g9" id="L6J-D7-7A2"/>
+                                    <outlet property="hiddenNo" destination="toK-gr-9c4" id="ngx-sr-1l3"/>
                                     <outlet property="lblName" destination="ztV-1n-lQE" id="mJ0-Ke-aao"/>
                                     <outlet property="lblPhone" destination="Lcp-XW-Cen" id="4HA-AY-7MJ"/>
                                     <segue destination="yUL-St-neV" kind="show" identifier="starDetail" id="qKW-ki-2wV"/>

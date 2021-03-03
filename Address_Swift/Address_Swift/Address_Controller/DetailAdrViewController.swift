@@ -167,7 +167,8 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol, Adr
     
     @IBAction func btnCall(_ sender: UIButton) {
         // 전화번호 지정
-        if let phoneCallURL = URL(string: lblPhone.text!) {
+
+        if let phoneCallURL = URL(string: "tel://" + lblPhone.text!) {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
@@ -180,7 +181,7 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol, Adr
     @IBAction func btnEmail(_ sender: UIButton) {
         let email = lblEmail.text
         
-        if let phoneEmailURL = URL(string: email!) {
+        if let phoneEmailURL = URL(string: "mailto:" + email!) {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneEmailURL)) {
                 application.open(phoneEmailURL, options: [:], completionHandler: nil)
@@ -192,7 +193,7 @@ class DetailAdrViewController: UIViewController, StarCountJsonModelProtocol, Adr
     @IBAction func btnMessage(_ sender: UIButton) {
         let phone = lblPhone.text
         
-        if let phoneMessageURL = URL(string: phone!) {
+        if let phoneMessageURL = URL(string: "sms://" + phone!) {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneMessageURL)) {
                 application.open(phoneMessageURL, options: [:], completionHandler: nil)

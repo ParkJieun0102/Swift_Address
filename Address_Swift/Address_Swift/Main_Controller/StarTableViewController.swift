@@ -20,7 +20,6 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // instance 선언
         let starJsonModel = StarJsonModel()
         starJsonModel.delegate = self // jsonModel에서 일 시키고, 그걸 self(여기서 쓸거임)
@@ -28,7 +27,6 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         
         // Custom Cell 정의
         starListTableView.rowHeight = 80 // Cell 높이 지정
-       
     }
     
     
@@ -40,8 +38,9 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         self.StarItem.remove(indexPath001 as Any)
         self.StarItem.removeObject(at:(indexPath001?.row)!)
 
+        
 
-        let addressNo = Int(cell.lblName.text!)
+        let addressNo = Int(cell.hiddenNo.text!)
         let starDeleteModel = StarDeleteModel() // instance 선언
         _ = starDeleteModel.starDeleteItems(addressNo: addressNo!)
         tableView.deleteRows(at:[indexPath001!], with: .left)
@@ -53,6 +52,7 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         // JsonModel의 locations에 담겨져서 넘어옴.
         StarItem = items as! NSMutableArray
         self.starListTableView.reloadData()
+        
     }
     // 입력, 수정, 삭제 후 DB 재구성 → Table 재구성
     override func viewWillAppear(_ animated: Bool) {
@@ -91,18 +91,11 @@ class StarTableViewController: UITableViewController, StarJsonModelProtocol, MyC
         let item: AddressModel = StarItem[indexPath.row] as! AddressModel
         cell.lblName?.text = "\(item.addressName!)"
         cell.lblPhone?.text = "\(item.addressPhone!)"
+        cell.hiddenNo?.text = "\(item.addressNo!)"
         
-        
+        cell.hiddenNo.isHidden = true
         return cell
     }
-    
-    //    func reloadTable() {
-    //        // instance 선언
-    //        let starJsonModel = StarJsonModel()
-    //        starJsonModel.delegate = self // jsonModel에서 일 시키고, 그걸 self(여기서 쓸거임)
-    //        starJsonModel.downloadItems() // jsonModel에서 이 메소드 실행해서 일 처리해!
-    //        self.starListTableView.reloadData()
-    //    }
     
     /*
      // Override to support conditional editing of the table view.

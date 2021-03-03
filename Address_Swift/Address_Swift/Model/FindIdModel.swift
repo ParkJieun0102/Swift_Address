@@ -15,7 +15,7 @@ protocol IdJsonModelProtocol: class{
 
 class FindIdModel: NSObject{
     var delegate: IdJsonModelProtocol!
-    var urlPath = "http://127.0.0.1:8080/swift_address/findID_ios.jsp"
+    var urlPath = "http://" + Share.localIP02 + ":8080/swift_address/findID_ios.jsp"
     var resultID = ""
     
     func downloadItems(userName: String, userPhone: String){
