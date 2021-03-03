@@ -176,8 +176,8 @@
 				620B929C25DCDC050006F81A /* Main_Controller */,
 				620B929B25DCDBE90006F81A /* Address_Controller */,
 				62F0160225E8F01D007BB073 /* Other_Controller */,
-				62E0760825DCAAFB00580061 /* DB */,
-				62E075F525DCA9C000580061 /* Model */,
+				62E0760825DCAAFB00580061 /* Model */,
+				62E075F525DCA9C000580061 /* Json */,
 				6271925825DBC57200B8A12A /* AppDelegate.swift */,
 				6271925A25DBC57200B8A12A /* SceneDelegate.swift */,
 				6271925E25DBC57200B8A12A /* Main.storyboard */,
@@ -213,7 +213,7 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
-		62E075F525DCA9C000580061 /* Model */ = {
+		62E075F525DCA9C000580061 /* Json */ = {
 			isa = PBXGroup;
 			children = (
 				62E075F625DCAA3A00580061 /* AddressInsertModel.swift */,
@@ -232,10 +232,10 @@
 				6246038025ECE558003E3682 /* FIndPwModel.swift */,
 				6219BCBA25ED320200AD5D5D /* AddressSelectModel.swift */,
 			);
-			path = Model;
+			path = Json;
 			sourceTree = "<group>";
 		};
-		62E0760825DCAAFB00580061 /* DB */ = {
+		62E0760825DCAAFB00580061 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				62E0760225DCAAE800580061 /* UserModel.swift */,
@@ -243,7 +243,7 @@
 				628E59C525E2B81400FD2B88 /* StarModel.swift */,
 				6246038325ECE887003E3682 /* IDModel.swift */,
 			);
-			path = DB;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		62F0160225E8F01D007BB073 /* Other_Controller */ = {
